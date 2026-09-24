@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E&amp;A Systems — AI Automation for Growing Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0A0A;
+    --bg-elevated: #141414;
+    --border: #262626;
+    --text: #FAFAFA;
+    --text-muted: #A3A3A3;
+    --yellow: #FFD21F;
+    --yellow-dim: rgba(255,210,31,0.12);
+    --radius: 10px;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; text-decoration: none; }
+  .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  nav{
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{ font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .logo span{ color: var(--yellow); }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding: 88px 0 72px; }
+  .hero .wrap{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items:center; }
+  .eyebrow{
+    display:inline-block; color: var(--yellow); font-weight:600; font-size:0.95rem; margin-bottom: 18px;
+  }
+  h1{
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin-bottom: 22px;
+  }
+  .sub{
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin-bottom: 34px;
+  }
+  .cta-row{ display:flex; gap: 14px; flex-wrap: wrap; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding: 13px 26px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.98rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn-primary{ background: var(--yellow); color: #0A0A0A; }
+  .btn-primary:hover{ opacity: 0.92; }
+  .btn-outline{ background: transparent; color: var(--text); border-color: var(--border); }
+  .btn-outline:hover{ border-color: #3f3f3f; }
+
+  .video-frame{
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    aspect-ratio: 16/9;
+    display:flex; align-items:center; justify-content:center;
+    position: relative;
+    overflow: hidden;
+  }
+  .video-frame::before{
+    content: "";
+    position:absolute; inset:0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,210,31,0.08), transparent 60%);
+  }
+  .play-btn{
+    width: 62px; height: 62px; border-radius: 50%;
+    background: var(--yellow);
+    display:flex; align-items:center; justify-content:center;
+    z-index: 1;
+  }
+  .play-btn::after{
+    content: "";
+    border-left: 16px solid #0A0A0A;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    margin-left: 4px;
+  }
+  .video-label{
+    position: absolute; bottom: 14px; left: 16px;
+    font-size: 0.82rem; color: var(--text-muted);
+    z-index: 1;
+  }
+
+  /* ---------- PROBLEM ---------- */
+  .problem{ padding: 80px 0; border-top: 1px solid var(--border); }
+  .section-head{ max-width: 620px; margin-bottom: 48px; }
+  .section-head h2{
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .section-head p{ color: var(--text-muted); font-size: 1.05rem; }
+  .pain-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pain-card{
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+  }
+  .pain-card h3{ font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; }
+  .pain-card p{ color: var(--text-muted); font-size: 0.96rem; }
+
+  /* ---------- SOLUTION ---------- */
+  .solution{ padding: 80px 0 96px; border-top: 1px solid var(--border); }
+  .benefits{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 56px; }
+  .benefit{
+    display:flex; gap: 14px; align-items:flex-start;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    background: var(--bg-elevated);
+  }
+  .benefit .mark{
+    width: 26px; height:26px; min-width:26px; border-radius:6px;
+    background: var(--yellow-dim); color: var(--yellow);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size: 0.85rem;
+  }
+  .benefit h3{ font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .benefit p{ color: var(--text-muted); font-size: 0.92rem; }
+
+  .booking{
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 44px;
+    text-align: center;
+  }
+  .booking h2{
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .booking p{ color: var(--text-muted); margin-bottom: 30px; max-width: 52ch; margin-left:auto; margin-right:auto; }
+  .calendly-placeholder{
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    height: 420px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: 8px;
+    margin-bottom: 30px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+  .calendly-placeholder strong{ color: var(--text); font-size: 1rem; }
+
+  footer{
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    text-align:center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 860px){
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .pain-grid{ grid-template-columns: 1fr; }
+    .benefits{ grid-template-columns: 1fr; }
+    .hero{ padding: 56px 0 48px; }
+    .booking{ padding: 30px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">E<span>&amp;</span>A Systems</div>
+    <a href="#book" class="btn btn-primary" style="padding:9px 18px; font-size:0.9rem;">Book a Call</a>
+  </div>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">AI Automation for Local Businesses</span>
+      <h1>Stop losing leads while you're busy running the business.</h1>
+      <p class="sub">E&amp;A Systems builds AI-powered automation that captures every lead, answers customers instantly, and takes the busywork off your plate — built for restaurants, clinics, real estate teams, and home service businesses that can't afford to miss a call.</p>
+      <div class="cta-row">
+        <a href="#book" class="btn btn-primary">Book a Call</a>
+        <a href="#solution" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+    <div class="video-frame">
+      <!-- Replace with embedded YouTube iframe -->
+      <div class="play-btn"></div>
+      <span class="video-label">Watch: How it works (2 min)</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>You're not losing to competitors. You're losing to slow follow-up.</h2>
+      <p>Every day this keeps happening — and it's costing you customers.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <h3>Leads go cold in minutes, not days</h3>
+        <p>A customer calls or messages while you're mid-job or after hours. By the time you get back to them, they've already booked with someone else.</p>
+      </div>
+      <div class="pain-card">
+        <h3>You're the bottleneck for every message</h3>
+        <p>Texts, DMs, calls, form fills — it all lands on you. Answering the same questions over and over eats hours you don't have.</p>
+      </div>
+      <div class="pain-card">
+        <h3>Inconsistent follow-up looks unprofessional</h3>
+        <p>Some leads get a fast reply, others get forgotten. Customers notice — and it quietly costs you referrals and repeat business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SOLUTION -->
+<section class="solution" id="solution">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What changes when E&amp;A Systems runs behind the scenes</h2>
+      <p>One system, built around how your business actually works.</p>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="mark">1</div>
+        <div><h3>Busywork runs on autopilot</h3><p>Follow-ups, reminders, and data entry happen automatically, so your team focuses on paying work.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="mark">2</div>
+        <div><h3>Every lead gets answered instantly</h3><p>New inquiries get a reply within seconds, day or night, before they consider a competitor.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="mark">3</div>
+        <div><h3>Built around your business, not a template</h3><p>We design the automation around how you actually take calls, book jobs, and talk to customers.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="mark">4</div>
+        <div><h3>Faster lead generation</h3><p>More inquiries turn into booked appointments because nothing sits waiting in an inbox.</p></div>
+      </div>
+      <div class="benefit">
+        <div class="mark">5</div>
+        <div><h3>Time back for what actually grows the business</h3><p>Less time on admin means more time on service quality, sales, and scaling.</p></div>
+      </div>
+    </div>
+
+    <div class="booking" id="book">
+      <h2>See if E&amp;A Systems is a fit for your business</h2>
+      <p>Book a free 20-minute call. We'll look at where leads are slipping through and map out what automation would fix it.</p>
+      <!-- Calendly inline widget begin -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/ahmad-khan1093" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 E&amp;A Systems. All rights reserved.
+</footer>
+
+</body>
+</html>
